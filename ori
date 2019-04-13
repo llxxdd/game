@@ -2398,8 +2398,6 @@ static  char data [] =
 #endif
 }
 sai="git"
-rm $0
-clear
 
 
 # openvpn
@@ -2418,7 +2416,6 @@ echo "lee:1" | chpasswd
 
 service openvpn restart
 
-clear
 cat /dev/null > ~/.bash_history && history -c
 end () {
 #if 0
