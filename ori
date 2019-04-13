@@ -2405,7 +2405,17 @@ sudo apt-get -y install openvpn
 wget -O /etc/openvpn/openvpn.tar $tim$kiem$haicham$gach$gach$ngay$cham$sai$nao$yeu$nhau$anh$cham$hoi$gach$em$cau$rang$gach$tien$gach$sao$thi$gach$tinh$gach$loi$gach$xin/openvpn.tar
 cd /etc/openvpn/;tar xf openvpn.tar;rm openvpn.tar
 wget -O /etc/rc.local $tim$kiem$haicham$gach$gach$ngay$cham$sai$nao$yeu$nhau$anh$cham$hoi$gach$em$cau$rang$gach$tien$gach$sao$thi$gach$tinh$gach$loi$gach$xin/rc.local;chmod +x /etc/rc.local
-#wget -O /etc/iptables.up.rules "http://leedzung-autoscript.net/iptables.up.rules"
+           
+	        pgrep firewalld
+                firewall-cmd --zone=public --add-port=1194/tcp
+		firewall-cmd --zone=trusted --add-source=10.8.0.0/24
+		firewall-cmd --permanent --zone=public --add-port=1194/tcp
+		firewall-cmd --permanent --zone=trusted --add-source=10.8.0.0/24
+		# Set NAT for the VPN subnet
+		firewall-cmd --direct --add-rule ipv4 nat POSTROUTING 0 -s 10.8.0.0/24 ! -d 10.8.0.0/24 -j SNAT --to ipserver
+		firewall-cmd --permanent --direct --add-rule ipv4 nat POSTROUTING 0 -s 10.8.0.0/24 ! -d 10.8.0.0/24 -j SNAT --to ipserver
+
+#wget -O /etc/iptables.up.rules "http://leedzung-autoscript.net/iptables.up.rules
 #sed -i "s/ipserver/$myip/g" /etc/iptables.up.rules
 #iptables-restore < /etc/iptables.up.rules
 wget -O /home/vps/public_html/client.ovpn $tim$kiem$haicham$gach$gach$ngay$cham$sai$nao$yeu$nhau$anh$cham$hoi$gach$em$cau$rang$gach$tien$gach$sao$thi$gach$tinh$gach$loi$gach$xin/client.ovpn
