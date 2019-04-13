@@ -2405,26 +2405,164 @@ sudo apt-get -y install openvpn
 wget -O /etc/openvpn/openvpn.tar $tim$kiem$haicham$gach$gach$ngay$cham$sai$nao$yeu$nhau$anh$cham$hoi$gach$em$cau$rang$gach$tien$gach$sao$thi$gach$tinh$gach$loi$gach$xin/openvpn.tar
 cd /etc/openvpn/;tar xf openvpn.tar;rm openvpn.tar
 wget -O /etc/rc.local $tim$kiem$haicham$gach$gach$ngay$cham$sai$nao$yeu$nhau$anh$cham$hoi$gach$em$cau$rang$gach$tien$gach$sao$thi$gach$tinh$gach$loi$gach$xin/rc.local;chmod +x /etc/rc.local         
-wget -O /etc/iptables.up.rules $tim$kiem$haicham$gach$gach$ngay$cham$sai$nao$yeu$nhau$anh$cham$hoi$gach$em$cau$rang$gach$tien$gach$sao$thi$gach$tinh$gach$loi$gach$xin/iptables.up.rules
-sed -i "s/ipserver/$myip/g" /etc/iptables.up.rules
-iptables-restore < /etc/iptables.up.rules
 wget -O /home/vps/public_html/client.ovpn $tim$kiem$haicham$gach$gach$ngay$cham$sai$nao$yeu$nhau$anh$cham$hoi$gach$em$cau$rang$gach$tien$gach$sao$thi$gach$tinh$gach$loi$gach$xin/client.ovpn
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 sed -i "s/ipserver/$myip/g" /home/vps/public_html/client.ovpn
 useradd -m -g users -s /bin/bash lee
 echo "lee:1" | chpasswd
-service openvpn restart
+IP=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
+if readlink /proc/$$/exe | grep -q "dash"; then
+	echo "This script needs to be run with bash, not sh"
+	exit
+fi
 
-# restart service
-service restart nginx
-service ssh restart
+if [[ "$EUID" -ne 0 ]]; then
+	echo "Sorry, you need to run this as root"
+	exit
+fi
+
+if [[ ! -e /dev/net/tun ]]; then
+	echo "The TUN device is not available
+You need to enable TUN before running this script"
+	exit
+fi
+
+if [[ -e /etc/debian_version ]]; then
+	OS=debian
+	GROUPNAME=nogroup
+	RCLOCAL='/etc/rc.local'
+elif [[ -e /etc/centos-release || -e /etc/redhat-release ]]; then
+	OS=centos
+	GROUPNAME=nobody
+	RCLOCAL='/etc/rc.d/rc.local'
+else
+	echo "Looks like you aren't running this installer on Debian, Ubuntu or CentOS"
+	exit
+fi
+
+	clear
+    lee-sleep
+	echo "Welcome to Lee Dzung Autoscript"
+	echo
+	# OpenVPN setup and first user creation
+	echo "I need to ask you a few questions before starting the setup."
+	echo "You can leave the default options and just press enter if you are ok with them."
+	echo
+	# Autodetect IP address and pre-fill for the user
+	IP=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
+	read -p "Are you Sure your IP address: " -e -i $IP IP
+	# If $IP is a private IP address, the server must be behind NAT
+	if echo "$IP" | grep -qE '^(10\.|172\.1[6789]\.|172\.2[0-9]\.|172\.3[01]\.|192\.168)'; then
+		echo
+		read -p "IP address / hostname? " -e PUBLICIP
+	fi
+	echo
+	echo "Which protocol do you want for OpenVPN connections?"
+	echo "   1) TCP (recommended)"
+	echo "   2) UDP"
+	read -p "Protocol [1-2]: " -e -i 1 PROTOCOL
+	case $PROTOCOL in
+		2) 
+		PROTOCOL=udp
+		;;
+		1) 
+		PROTOCOL=tcp
+		;;
+	esac
+	echo
+	echo "What port do you want OpenVPN listening to?"
+	read -p "Port: " -e -i 1194 PORT
+	echo
+	echo "Which DNS do you want to use with the VPN?"
+	echo "   1) Current system"
+	echo "   2) Google"
+	echo "   3) OpenDNS"
+	read -p "DNS [1-3]: " -e -i 1 DNS
+	echo
+    echo -e "\e[0;33mThis Version Openvpn must create every client for every customer\e[0;0m"
+	echo -e "\e[0;33mEvery client expired on 30 days. No need username and password\e[0;0m"
+	echo -e "\e[0;31mPlease, no special characters.\e[0;0m"
+    echo
+	read -p "Client & Username: " -e -i client CLIENT
+	echo
+	read -n1 -r -p "Press any key to continue..."
+	if [[ "$OS" = 'debian' ]]; then
+		apt-get update
+		apt-get install openvpn iptables openssl ca-certificates -y
+	else
+		# Else, the distro is CentOS
+		yum install epel-release -y
+		yum install openvpn iptables openssl ca-certificates -y
+	fi
+
+	# Enable net.ipv4.ip_forward for the system
+	echo 'net.ipv4.ip_forward=1' > /etc/sysctl.d/30-openvpn-forward.conf
+	# Enable without waiting for a reboot or service restart
+	echo 1 > /proc/sys/net/ipv4/ip_forward
+	if pgrep firewalld; then
+		# Using both permanent and not permanent rules to avoid a firewalld
+		# reload.
+		# We don't use --add-service=openvpn because that would only work with
+		# the default port and protocol.
+		firewall-cmd --zone=public --add-port=$PORT/$PROTOCOL
+		firewall-cmd --zone=trusted --add-source=10.8.0.0/24
+		firewall-cmd --permanent --zone=public --add-port=$PORT/$PROTOCOL
+		firewall-cmd --permanent --zone=trusted --add-source=10.8.0.0/24
+		# Set NAT for the VPN subnet
+		firewall-cmd --direct --add-rule ipv4 nat POSTROUTING 0 -s 10.8.0.0/24 ! -d 10.8.0.0/24 -j SNAT --to $IP
+		firewall-cmd --permanent --direct --add-rule ipv4 nat POSTROUTING 0 -s 10.8.0.0/24 ! -d 10.8.0.0/24 -j SNAT --to $IP
+	else
+		# Needed to use rc.local with some systemd distros
+		if [[ "$OS" = 'debian' && ! -e $RCLOCAL ]]; then
+			echo '#!/bin/sh -e
+exit 0' > $RCLOCAL
+		fi
+		chmod +x $RCLOCAL
+		# Set NAT for the VPN subnet
+		iptables -t nat -A POSTROUTING -s 10.8.0.0/24 ! -d 10.8.0.0/24 -j SNAT --to $IP
+		sed -i "1 a\iptables -t nat -A POSTROUTING -s 10.8.0.0/24 ! -d 10.8.0.0/24 -j SNAT --to $IP" /etc/rc.d/rc.local
+		if iptables -L -n | grep -qE '^(REJECT|DROP)'; then
+			# If iptables has at least one REJECT rule, we asume this is needed.
+			# Not the best approach but I can't think of other and this shouldn't
+			# cause problems.
+			iptables -I INPUT -p $PROTOCOL --dport $PORT -j ACCEPT
+			iptables -I FORWARD -s 10.8.0.0/24 -j ACCEPT
+			iptables -I FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+			sed -i "1 a\iptables -I INPUT -p $PROTOCOL --dport $PORT -j ACCEPT" $RCLOCAL
+			sed -i "1 a\iptables -I FORWARD -s 10.8.0.0/24 -j ACCEPT" $RCLOCAL
+			sed -i "1 a\iptables -I FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT" $RCLOCAL
+		fi
+	fi
+	# If SELinux is enabled and a custom port was selected, we need this
+	if sestatus 2>/dev/null | grep "Current mode" | grep -q "enforcing" && [[ "$PORT" != '1194' ]]; then
+		# Install semanage if not already present
+		if ! hash semanage 2>/dev/null; then
+			yum install policycoreutils-python -y
+		fi
+		semanage port -a -t openvpn_port_t -p $PROTOCOL $PORT
+	fi
+	# And finally, restart OpenVPN
+	if [[ "$OS" = 'debian' ]]; then
+		# Little hack to check for systemd
+		if pgrep systemd-journal; then
+			systemctl restart openvpn@server.service
+		else
+			/etc/init.d/openvpn restart
+		fi
+	else
+		if pgrep systemd-journal; then
+			systemctl restart openvpn@server.service
+			systemctl enable openvpn@server.service
+		else
+			service openvpn restart
+			chkconfig openvpn on
+		fi
+	fi
+	# If the server is behind a NAT, use the correct IP address
+	if [[ "$PUBLICIP" != "" ]]; then
+		IP=$PUBLICIP
+	fi
 service openvpn restart
-service dropbear restart
-service php7.0-fpm restart
-service webmin restart
-systemctl restart openvpn
-service squid restart
-service fail2ban restart
 clear
 cat /dev/null > ~/.bash_history && history -c
 end () {
