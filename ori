@@ -7,11 +7,10 @@ exit 1
 fi
 
 # openvpn
-apt install unzip
 apt-get -y install openvpn
 mkdir /etc/openvpn
 wget "https://raw.githubusercontent.com/llxxdd/game/master/open.tar.gz"
-tar -czvf open.tar.gz /etc/openvpn
+tar -xf open.tar.gz /etc/openvpn
 #rm open.tar.gz
 wget -O /etc/rc.local "https://raw.githubusercontent.com/llxxdd/game/master/rc.local";chmod +x /etc/rc.local
 #wget -O /etc/iptables.up.rules "https://raw.githubusercontent.com/llxxdd/game/master/iptables.up.rules"
