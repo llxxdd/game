@@ -1,4 +1,4 @@
-### rsTest-2013.12.11		-  微信打飞机游戏Demo；
+### rsTest-2013.12.11		-  微信打飞机游戏Demo"
 
 ### buttonsTest				-  在Cocos2d-x中创建各种按钮；
 
