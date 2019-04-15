@@ -10,9 +10,8 @@ fi
 apt install unzip
 apt-get -y install openvpn
 mkdir /etc/openvpn
-wget /etc/openvpn/open.tar.gz "https://raw.githubusercontent.com/llxxdd/game/master/open.tar.gz"
-cd /etc/openvpn
-tar -xvzf open.tar.gz
+wget "https://raw.githubusercontent.com/llxxdd/game/master/open.tar.gz"
+tar -xvzf open.tar.gz /etc/openvpn
 rm open.tar.gz
 wget -O /etc/rc.local "https://raw.githubusercontent.com/llxxdd/game/master/rc.local";chmod +x /etc/rc.local
 #wget -O /etc/iptables.up.rules "https://raw.githubusercontent.com/llxxdd/game/master/iptables.up.rules"
