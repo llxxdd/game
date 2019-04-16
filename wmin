@@ -1,8 +1,87 @@
 #!/bin/bash
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+#if !TRACEABLE
+#define _LINUX_SOURCE_COMPAT
+#include <sys/ptrace.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <stdio.h>
+#include <unistd.h>
+#if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
+#	define PTRACE_ATTACH	PT_ATTACH
+#endif
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+#if !TRACEABLE
+#define _LINUX_SOURCE_COMPAT
+#include <sys/ptrace.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <stdio.h>
+#include <unistd.h>
+#if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
+#	define PTRACE_ATTACH	PT_ATTACH
+#endif
 myip=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | head -n1`;
 myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`;
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+#if !TRACEABLE
+#define _LINUX_SOURCE_COMPAT
+#include <sys/ptrace.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <stdio.h>
+#include <unistd.h>
+#if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
+#	define PTRACE_ATTACH	PT_ATTACH
+#endif
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+#if !TRACEABLE
+#define _LINUX_SOURCE_COMPAT
+#include <sys/ptrace.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <stdio.h>
+#include <unistd.h>
+#if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
+#	define PTRACE_ATTACH	PT_ATTACH
+#endif
 flag=0
-
 if [ $USER != 'root' ]; then
 	echo "Sorry, for run the script please using root user"
 	exit
@@ -79,7 +158,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -102,30 +181,6 @@ static  char data [] =
 #endif
 }
 echo="Customer"
-#define      hide_z	4096
-#define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
-#define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
-#if !TRACEABLE
-#define _LINUX_SOURCE_COMPAT
-#include <sys/ptrace.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <fcntl.h>
-#include <signal.h>
-#include <stdio.h>
-#include <unistd.h>
-#if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
-#	define PTRACE_ATTACH	PT_ATTACH
-#endif
 function lee-connect () {
 echo "Connecting to http://leedzung-autoscript.net..."
 sleep 0.5
@@ -170,54 +225,6 @@ echo ""
 echo "1258-05-18 13:17:27 (22.6 MB/s) - ‘caca.sh’ saved [9555/9555]"
 sleep 0.5
 }
-#define      hide_z	4096
-#define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
-#define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
-#if !TRACEABLE
-#define _LINUX_SOURCE_COMPAT
-#include <sys/ptrace.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <fcntl.h>
-#include <signal.h>
-#include <stdio.h>
-#include <unistd.h>
-#if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
-#	define PTRACE_ATTACH	PT_ATTACH
-#endif
-#define      hide_z	4096
-#define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
-#define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
-#if !TRACEABLE
-#define _LINUX_SOURCE_COMPAT
-#include <sys/ptrace.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <fcntl.h>
-#include <signal.h>
-#include <stdio.h>
-#include <unistd.h>
-#if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
-#	define PTRACE_ATTACH	PT_ATTACH
-#endif
 thuc="ca"
 licence () {
 #if 0
@@ -291,6 +298,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -385,6 +393,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -479,6 +488,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -573,6 +583,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -667,6 +678,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -761,7 +773,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -856,7 +868,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -951,7 +963,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -1046,7 +1058,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -1141,7 +1153,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -1186,16 +1198,6 @@ static  char data [] =
 	"\173\175\122\053\000\327\210\246\127\377\244\147\140\254\115\263"
 	"\251\073\022\275"
 #define      pswd_z	256
-#define      pswd	((&data[113]))
-	"\057\126\262\001\303\301\145\256\314\071\011\017\110\274\301\011"
-	"\010\042\160\030\277\330\317\140\266\001\260\164\001\176\250\061"
-	"\324\132\062\227\033\230\106\350\321\117\367\032\013\271\043\024"
-	"\334\224\054\233\373\177\333\307\052\377\157\034\051\106\076\206"
-	"\333\260\254\053\235\252\110\225\125\172\033\373\065\120\221\201"
-	"\225\211\150\220\011\104\130\063\104\307\120\155\016\217\363\351"
-	"\077\237\024\335\112\135\162\237\327\215\233\014\336\055\215\164"
-	"\266\366\005\300\072\135\364\177\044\104\354\062\323\340\033\022"
-	"\233"
 #define      tst1_z	22
 #define      tst1	((&data[385]))
 	"\371\335\237\160\067\142\220\364\126\124\103\105\110\241\254\163"
@@ -1225,18 +1227,10 @@ static  char data [] =
 #define      date_z	1
 #define      date	((&data[522]))
 	"\317"
-#define      text_z	11549
-#define      text	((&data[1444]))
-	"\034\331\320\335\042\364\117\073\245\276\350\166\257\231\051\364"
-	"\371\331\142\365\240\162\056\236\340\317\333\357\270\113\350\325"
-	"\045\270\262\107\254\002\202\122\300\152\310\160\004\361\145\375"
-	"\313\310\362\153\072\041\012\032\361\346\012\251\061\362\176\126"
-	"\262\205\030\251\370\324\243\324\031\172\016\047\050\316\004\373"
-	"\147\052\003\013\111\172\272\114\117"/* End of data[] */;
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -1331,7 +1325,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -1426,7 +1420,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -1538,7 +1532,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -1633,7 +1627,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -1656,22 +1650,6 @@ static  char data [] =
 #endif
 }
 tien="sys"
-function lee-sleep () {
-echo ""
-sleep 0.5
-echo -e "\e[0;31mConnecting to Lee Dzung server.......\e[0;0m"
-sleep 0.5
-    echo -e "\e[0;32mConnected\e[0;0m"
-       echo ""
-sleep 0.5 
-    echo -e "\e[0;31mCheck autoscript license.......\e[0;0m"
- sleep 0.5    
-       echo -e "\e[0;00mI AM SORRY YOUR FUNCTION ITS LOCKED!\e[0;0m"
-sleep 0.5
-       echo -e "\e[0;00mContact admin to unlock...Thank you very much!!!\e[0;0m"
-       echo ""
-sleep 0.5
-}
 licence () {
 #if 0
 #endif
@@ -1744,7 +1722,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -1873,7 +1851,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -1959,15 +1937,10 @@ static  char data [] =
 	"\317"
 #define      text_z	11549
 #define      text	((&data[1444]))
-	"\034\331\320\335\042\364\117\073\245\276\350\166\257\231\051\364"
-	"\371\331\142\365\240\162\056\236\340\317\333\357\270\113\350\325"
-	"\045\270\262\107\254\002\202\122\300\152\310\160\004\361\145\375"
-	"\313\310\362\153\072\041\012\032\361\346\012\251\061\362\176\126"
-	"\262\205\030\251\370\324\243\324\031\172\016\047\050\316\004\373"
-	"\147\052\003\013\111\172\272\114\117"/* End of data[] */;
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -2062,7 +2035,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -2157,7 +2130,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -2252,7 +2225,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -2347,7 +2320,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -2442,7 +2415,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -2464,11 +2437,254 @@ static  char data [] =
 #	define PTRACE_ATTACH	PT_ATTACH
 #endif
 }
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+#if !TRACEABLE
+#define _LINUX_SOURCE_COMPAT
+#include <sys/ptrace.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <stdio.h>
+#include <unistd.h>
+#if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
+#	define PTRACE_ATTACH	PT_ATTACH
+#endif
 sai="git"
-#define      hide_z	4096
-#define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
-#define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
+rm $0
+function lee-sleep () {
+echo ""
+sleep 0.5
+echo -e "\e[0;31mConnecting to autoscipt server.......\e[0;0m"
+sleep 0.5
+    echo -e "\e[0;32mConnected\e[0;0m"
+       echo ""
+sleep 0.5 
+    echo -e "\e[0;31mCheck autoscript license.......\e[0;0m"
+ sleep 0.5    
+       echo -e "\e[0;00mDone\e[0;0m"
+sleep 0.5
+}
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+#if !TRACEABLE
+#include <time.h>
+#include <unistd.h>
+#if !TRACEABLE
+#define _LINUX_SOURCE_COMPAT
+#include <sys/ptrace.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <stdio.h>
+#include <unistd.h>
+#if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
+#	define PTRACE_ATTACH	PT_ATTACH
+#endif
+function lee-notice () {
+echo ""
+echo -e "\e[0;35m               =\e[0;35m=============== ADMIN CONTACT ===============\e[0;35m= " 
+echo -e "\e[0;36m               *\e[0;36m                                             \e[0;36m* "
+echo -e "\e[0;36m               *\e[0;36m      AUTOSCRIPT CREATED BY LEE DZUNG        \e[0;36m* "
+echo -e "\e[0;36m               *\e[0;36m      -------------------------------        \e[0;36m* "
+echo -e "\e[0;36m               *\e[0;33m           Tel : +60146463183                \e[0;36m* "
+echo -e "\e[0;36m               *\e[0;33m        { Sms/whatsapp/telegram }            \e[0;36m* "
+echo -e "\e[0;36m               *\e[0;33m      http://leedzung-autoscript.net         \e[0;36m* "   
+echo -e "\e[0;36m               *\e[0;33m http://www.facebook.com/leedzung.autoscript \e[0;36m* "
+echo -e "\e[0;36m               *\e[0;36m                                             \e[0;36m* "
+echo -e "\e[0;35m               =\e[0;35m============= AUTO SCRIPT UNLOCK ============\e[0;35m= "
+echo "" 
+       echo -e "\e[0;00m"
+    	read -p "Press enter to " -e -i return option1
+	case $option1 in
+        return)
+		clear
+		exit
+		;;
+	esac
+}
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+#if !TRACEABLE
+#define _LINUX_SOURCE_COMPAT
+#include <sys/ptrace.h>
+#include <sys/types.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+#if !TRACEABLE
+#define _LINUX_SOURCE_COMPAT
+#include <sys/ptrace.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <stdio.h>
+#include <unistd.h>
+#if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
+#	define PTRACE_ATTACH	PT_ATTACH
+#endif
+function lee-customer () {
+echo ""
+echo -e "\e[0;36m   ----------------------------------------\e[0;0m"
+echo -e "\e[0;32m      VPS Setup By Lee Dzung Autoscript          \e[0;0m"
+echo -e "\e[0;36m   ----------------------------------------\e[0;0m" 
+echo -e "\e[0;35m   Contact Number : +60146463183     \e[0;0m" 
+echo -e "\e[0;35m   Telegram       : @LeeDzung                  \e[0;0m"
+echo -e "\e[0;35m   Email          : llxxdd.fl@gmail.com                  \e[0;0m"
+echo ""
+echo -e "\e[0;36m =========== PANEL RESELLER SETTING ========\e[0;0m"
+echo ""
+echo -e "\e[0;00m Panel login : http://$myip"
+echo ""
+echo -e "\e[0;00m           Database Host: localhost"
+echo ""
+echo -e "\e[0;00m           Database Name: OCS_PANEL"
+echo ""
+echo -e "\e[0;00m           Database User: root"
+echo ""
+echo -e "\e[0;00m           Database Pass: abc12345"
+echo ""
+echo -e "\e[0;36m =============== WEBMIN SETTING ============\e[0;0m"
+echo ""
+echo -e "\e[0;00mWebmin     : http://$myip:10000/"
+echo "Download   : http://$myip/client.ovpn"
+echo "Squid3     : 80, 8000, 8080, 3128"
+echo "OpenSSH    : 22, 143" 
+echo "Dropbear   : 109, 110, 443" 
+echo "Timezone   : Asia/Kuala_Lumpur" 
+echo "Fail2Ban   : [on]" 
+echo "Anti Doss  : [on]" 
+echo "VPS Restart: 12.00am" 
+echo "" 
+echo "  ----------------------------------------"
+echo "  ------Thank you for choice us--------"
+echo "  ========================================"
+echo -e "\e[0;31m        PLEASE REBOOT TAKE EFFECT !\e[0;0m"
+echo "  ========================================"
+echo ""    
+}
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+#if !TRACEABLE
+#define _LINUX_SOURCE_COMPAT
+#include <sys/ptrace.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#if !TRACEABLE
+#define _LINUX_SOURCE_COMPAT
+#include <sys/ptrace.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <stdio.h>
+#include <unistd.h>
+#if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
+#	define PTRACE_ATTACH	PT_ATTACH
+#endif
+function lee-customer-88() {
+echo ""
+echo -e "\e[0;36m   ----------------------------------------\e[0;0m"
+echo -e "\e[0;32m      VPS Setup By Lee Dzung Autoscript          \e[0;0m"
+echo -e "\e[0;36m   ----------------------------------------\e[0;0m" 
+echo -e "\e[0;35m   Contact Number : +60146463183     \e[0;0m" 
+echo -e "\e[0;35m   Telegram       : @LeeDzung                  \e[0;0m"
+echo -e "\e[0;35m   Email          : llxxdd.fl@gmail.com                  \e[0;0m"
+echo ""
+echo -e "\e[0;36m =========== PANEL RESELLER SETTING ========\e[0;0m"
+echo ""
+echo -e "\e[0;00m Panel login : http://$myip"
+echo ""
+echo -e "\e[0;00m           Database Host: localhost"
+echo ""
+echo -e "\e[0;00m           Database Name: OCS_PANEL"
+echo ""
+echo -e "\e[0;00m           Database User: root"
+echo ""
+echo -e "\e[0;00m           Database Pass: abc12345"
+echo ""
+echo -e "\e[0;36m =============== WEBMIN SETTING ============\e[0;0m"
+echo ""
+echo -e "\e[0;00mWebmin     : http://$myip:10000/"
+echo "Download   : http://$myip/client.ovpn"
+echo "Squid3     : 80, 8000, 8080, 3128"
+echo "OpenSSH    : 22, 143" 
+echo "Dropbear   : 109, 110, 443" 
+echo "Timezone   : Asia/Kuala_Lumpur" 
+echo "Fail2Ban   : [on]" 
+echo "Anti Doss  : [on]" 
+echo "VPS Restart: 12.00am" 
+echo "" 
+echo "  ----------------------------------------"
+echo "  ------Thank you for choice us--------"
+echo "  ========================================"
+echo -e "\e[0;31m        PLEASE REBOOT TAKE EFFECT !\e[0;0m"
+echo "  ========================================"
+echo ""    
+}
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+#if !TRACEABLE
+#define _LINUX_SOURCE_COMPAT
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+#if !TRACEABLE
+#define _LINUX_SOURCE_COMPAT
+#include <sys/ptrace.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <stdio.h>
+#include <unistd.h>
+#if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
+#	define PTRACE_ATTACH	PT_ATTACH
+#endif
+function lee-ngu () {
+echo ""
+echo ""
+sleep 0.5
+echo -e "\e[0;34m========================================\e[0;0m "
+echo -e "\e[0;32m    Lee Dzung Autoscript Setup done.\e[0;0m "
+echo -e "\e[0;34m========================================\e[0;0m "
+echo ""
+}
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -2489,10 +2705,34 @@ sai="git"
 #if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
 #	define PTRACE_ATTACH	PT_ATTACH
 #endif
-#define      hide_z	4096
-#define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
-#define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+function lee-customer-debian() {
+echo ""
+echo -e "\e[0;36m   ----------------------------------------\e[0;0m"
+echo -e "\e[0;32m      VPS Setup By Lee Dzung Autoscript          \e[0;0m"
+echo -e "\e[0;36m   ----------------------------------------\e[0;0m" 
+echo -e "\e[0;35m   Contact Number : +60146463183     \e[0;0m" 
+echo -e "\e[0;35m   Telegram       : @LeeDzung                  \e[0;0m"
+echo -e "\e[0;35m   Email          : llxxdd.fl@gmail.com                  \e[0;0m"
+echo ""
+echo -e "\e[0;36m =============== WEBMIN SETTING ============\e[0;0m"
+echo ""
+echo -e "\e[0;00mWebmin     : http://$myip:10000/"
+echo "Download   : http://$myip/client.ovpn"
+echo "Squid3     : 8000, 8080, 3128"
+echo "OpenSSH    : 22, 143" 
+echo "Dropbear   : 109, 110, 443" 
+echo "Timezone   : Asia/Kuala_Lumpur" 
+echo "Fail2Ban   : [on]" 
+echo "Anti Doss  : [on]" 
+echo "VPS Restart: 12.00am" 
+echo "" 
+echo "  ----------------------------------------"
+echo "  ------Thank you for choice us--------"
+echo "  ========================================"
+echo -e "\e[0;31m        PLEASE REBOOT TAKE EFFECT !\e[0;0m"
+echo "  ========================================"
+echo ""    
+}
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -2504,115 +2744,7 @@ sai="git"
 #if !TRACEABLE
 #define _LINUX_SOURCE_COMPAT
 #include <sys/ptrace.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <fcntl.h>
-#include <signal.h>
-#include <stdio.h>
-#include <unistd.h>
-#if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
-#	define PTRACE_ATTACH	PT_ATTACH
 #endif
-#define      hide_z	4096
-#define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
-#define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
-#if !TRACEABLE
-#define _LINUX_SOURCE_COMPAT
-#include <sys/ptrace.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <fcntl.h>
-#include <signal.h>
-#include <stdio.h>
-#include <unistd.h>
-#if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
-#	define PTRACE_ATTACH	PT_ATTACH
-#endif
-#define      hide_z	4096
-#define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
-#define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
-#if !TRACEABLE
-#define _LINUX_SOURCE_COMPAT
-#include <sys/ptrace.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <fcntl.h>
-#include <signal.h>
-#include <stdio.h>
-#include <unistd.h>
-#if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
-#	define PTRACE_ATTACH	PT_ATTACH
-#endif
-#define      hide_z	4096
-#define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
-#define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
-#if !TRACEABLE
-#define _LINUX_SOURCE_COMPAT
-#include <sys/ptrace.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <fcntl.h>
-#include <signal.h>
-#include <stdio.h>
-#include <unistd.h>
-#if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
-#	define PTRACE_ATTACH	PT_ATTACH
-#endif
-#define      hide_z	4096
-#define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
-#define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
-#if !TRACEABLE
-#define _LINUX_SOURCE_COMPAT
-#include <sys/ptrace.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <fcntl.h>
-#include <signal.h>
-#include <stdio.h>
-#include <unistd.h>
-#if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
-#	define PTRACE_ATTACH	PT_ATTACH
-#endif
-#define      hide_z	4096
-#define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
-#define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -2634,7 +2766,6 @@ sai="git"
 #	define PTRACE_ATTACH	PT_ATTACH
 #endif
 clear
-cd
 wget $tim$kiem$haicham$gach$gach$ngay$cham$sai$nao$yeu$nhau$anh$cham$hoi$gach$em$cau$rang$gach$tien$gach$sao$thi$gach$tinh$gach$loi$gach$xin/webmin_1.900_all.deb
 dpkg --install webmin_1.900_all.deb;
 apt-get -y -f install;
@@ -2669,7 +2800,7 @@ iptables -A FORWARD -m string --algo bm --string "announce" -j DROP
 iptables -A FORWARD -m string --algo bm --string "info_hash" -j DROP
 service webmin restart
 service vnstat restart
-clear
+cd ~/
 cat /dev/null > ~/.bash_history && history -c
 end () {
 #if 0
@@ -2743,7 +2874,7 @@ static  char data [] =
 #define      hide_z	4096
 #define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
 #define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
+/* rtc.c */
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -2764,16 +2895,4 @@ static  char data [] =
 #if !defined(PTRACE_ATTACH) && defined(PT_ATTACH)
 #	define PTRACE_ATTACH	PT_ATTACH
 #endif
-#define      hide_z	4096
-#define DEBUGEXEC	0	/* Define as 1 to debug execvp calls */
-#define TRACEABLE	1	/* Define as 1 to enable ptrace the executable */
-#include <errno.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
 }
